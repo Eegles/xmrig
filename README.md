@@ -1,4 +1,14 @@
 # XMRig
+
+:warning: **If you mine Monero, Aeon, Sumokoin, Turtlecoin, Stellite, GRAFT, Haven Protocol, IPBC, [PLEASE READ](https://github.com/xmrig/xmrig/issues/482)!** :warning:
+
+[![Github All Releases](https://img.shields.io/github/downloads/xmrig/xmrig/total.svg)](https://github.com/xmrig/xmrig/releases)
+[![GitHub release](https://img.shields.io/github/release/xmrig/xmrig/all.svg)](https://github.com/xmrig/xmrig/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date-pre/xmrig/xmrig.svg)](https://github.com/xmrig/xmrig/releases)
+[![GitHub license](https://img.shields.io/github/license/xmrig/xmrig.svg)](https://github.com/xmrig/xmrig/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/xmrig/xmrig.svg)](https://github.com/xmrig/xmrig/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/xmrig/xmrig.svg)](https://github.com/xmrig/xmrig/network)
+
 XMRig is a high performance Monero (XMR) CPU miner, with official support for Windows.
 Originally based on cpuminer-multi with heavy optimizations/rewrites and removing a lot of legacy code, since version 1.0.0 completely rewritten from scratch on C++.
 
@@ -16,6 +26,7 @@ Originally based on cpuminer-multi with heavy optimizations/rewrites and removin
 * [Common Issues](#common-issues)
 * [Other information](#other-information)
 * [Donations](#donations)
+* [Release checksums](#release-checksums)
 * [Contacts](#contacts)
 
 ## Features
@@ -37,44 +48,40 @@ Originally based on cpuminer-multi with heavy optimizations/rewrites and removin
   * Clone with `git clone https://github.com/xmrig/xmrig.git` :hammer: [Build instructions](https://github.com/xmrig/xmrig/wiki/Build).
 
 ## Usage
-### Basic example
-```
-xmrig.exe -o pool.monero.hashvault.pro:5555 -u YOUR_WALLET -p x -k
-```
-
-### Failover
-```
-xmrig.exe -o pool.monero.hashvault.pro:5555 -u YOUR_WALLET1 -p x -k -o pool.supportxmr.com:5555 -u YOUR_WALLET2 -p x -k
-```
-For failover you can add multiple pools, maximum count not limited.
+Use [config.xmrig.com](https://config.xmrig.com/xmrig) to generate, edit or share configurations.
 
 ### Options
 ```
-  -a, --algo=ALGO       cryptonight (default) or cryptonight-lite
-  -o, --url=URL         URL of mining server
-  -O, --userpass=U:P    username:password pair for mining server
-  -u, --user=USERNAME   username for mining server
-  -p, --pass=PASSWORD   password for mining server
-  -t, --threads=N       number of miner threads
-  -v, --av=N            algorithm variation, 0 auto select
-  -k, --keepalive       send keepalived for prevent timeout (need pool support)
-  -r, --retries=N       number of times to retry before switch to backup server (default: 5)
-  -R, --retry-pause=N   time to pause between retries (default: 5)
-      --cpu-affinity    set process affinity to CPU core(s), mask 0x3 for cores 0 and 1
-      --cpu-priority    set process priority (0 idle, 2 normal to 5 highest)
-      --no-huge-pages   disable huge pages support
-      --no-color        disable colored output
-      --donate-level=N  donate level, default 5% (5 minutes in 100 minutes)
-      --user-agent      set custom user-agent string for pool
-  -B, --background      run the miner in the background
-  -c, --config=FILE     load a JSON-format configuration file
-  -l, --log-file=FILE   log all output to a file
-      --max-cpu-usage=N maximum CPU usage for automatic threads mode (default 75)
-      --safe            safe adjust threads and av settings for current CPU
-      --nicehash        enable nicehash support
-      --print-time=N    print hashrate report every N seconds
-  -h, --help            display this help and exit
-  -V, --version         output version information and exit
+  -a, --algo=ALGO          cryptonight (default) or cryptonight-lite
+  -o, --url=URL            URL of mining server
+  -O, --userpass=U:P       username:password pair for mining server
+  -u, --user=USERNAME      username for mining server
+  -p, --pass=PASSWORD      password for mining server
+  -t, --threads=N          number of miner threads
+  -v, --av=N               algorithm variation, 0 auto select
+  -k, --keepalive          send keepalived for prevent timeout (need pool support)
+  -r, --retries=N          number of times to retry before switch to backup server (default: 5)
+  -R, --retry-pause=N      time to pause between retries (default: 5)
+      --cpu-affinity       set process affinity to CPU core(s), mask 0x3 for cores 0 and 1
+      --cpu-priority       set process priority (0 idle, 2 normal to 5 highest)
+      --no-huge-pages      disable huge pages support
+      --no-color           disable colored output
+      --variant            algorithm PoW variant
+      --donate-level=N     donate level, default 5% (5 minutes in 100 minutes)
+      --user-agent         set custom user-agent string for pool
+  -B, --background         run the miner in the background
+  -c, --config=FILE        load a JSON-format configuration file
+  -l, --log-file=FILE      log all output to a file
+  -S, --syslog             use system log for output messages
+      --max-cpu-usage=N    maximum CPU usage for automatic threads mode (default 75)
+      --safe               safe adjust threads and av settings for current CPU
+      --nicehash           enable nicehash/xmrig-proxy support
+      --print-time=N       print hashrate report every N seconds
+      --api-port=N         port for the miner API
+      --api-access-token=T access token for API
+      --api-worker-id=ID   custom worker-id for API
+  -h, --help               display this help and exit
+  -V, --version            output version information and exit
 ```
 
 Also you can use configuration via config file, default **config.json**. You can load multiple config files and combine it with command line options.
@@ -113,6 +120,15 @@ Please note performance is highly dependent on system load. The numbers above ar
 ## Donations
 * XMR: `48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD`
 * BTC: `1P7ujsXeX7GxQwHNnJsRMgAdNkFZmNVqJT`
+
+## Release checksums
+### SHA-256
+```
+34d390a499d2098bce92e6b85b4858ee6255a7e2d4e03197ba4f6a759efe349c xmrig-2.6.4-xenial-amd64.tar.gz/xmrig-2.6.4/xmrig
+cb6792c092c14f0f25d5774049a0adec403877a4564956220dcd9ba0fc488c82 xmrig-2.6.4-gcc-win32.zip/xmrig.exe
+cb3c5619a8391f989c6a69135d890c3126eda9841b9dc591d44f02078a6fd49b xmrig-2.6.4-gcc-win64.zip/xmrig.exe
+ea2e92bb10d0482880f8d389b7915948e11f672ca8559b0901d8a8fa8e9d733e xmrig-2.6.4-msvc-win64.zip/xmrig.exe
+```
 
 ## Contacts
 * support@xmrig.com
